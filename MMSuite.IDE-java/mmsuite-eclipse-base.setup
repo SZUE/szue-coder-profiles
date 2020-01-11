@@ -5,17 +5,17 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
-    name="mmsuite-eclipse-base"
+    name="IDE-java"
     label="SZUE.MMSuite.IDE-java">
   <annotation
       source="http://www.eclipse.org/oomph/setup/BrandingInfo">
     <detail
         key="folderName">
-      <value>mmserver-eclipse-latest</value>
+      <value>mm-eclipse</value>
     </detail>
     <detail
         key="folderName.macosx">
-      <value>mmserver-eclipse-latest</value>
+      <value>mm-eclipse</value>
     </detail>
   </annotation>
   <setupTask
@@ -199,33 +199,19 @@
       <requirement
           name="org.eclipse.eclemma.feature.feature.group"/>
 
-
       <!-- MarketPlace Client  -->
       <requirement
           name="org.eclipse.epp.mpc.feature.group"/>
 
       <!-- Oomph Client  -->
-
-
+      <requirement
+          name="org.eclipse.oomph.setup.feature.group" />
 
       <repository
           url="http://download.eclipse.org/releases/2019-12"/>
       <repository
           url="http://download.eclipse.org/technology/epp/packages/2019-12"/>
-      <repository
-          url="http://download.eclipse.org/rt/rap/tools/3.9"/>
-      <repository
-          url="https://checkstyle.github.io/eclipse-cs/update"/>
-      <repository
-          url="http://eclipse.pitest.org/release"/>
-      <repository
-          url="https://download.eclipse.org/ecp/releases/releases_target_123/"/>
-      <repository
-          url="http://download.eclipse.org/edapt/releases/14x"/>
-      <repository
-          url="http://download.eclipse.org/cbi/tpd/3.0.0-SNAPSHOT/"/>
-      <repository
-          url="http://download.eclipse.org/efxclipse/updates-released/3.6.0/site/"/>
+
     </setupTask>
     <description></description>
   </version>
