@@ -11,11 +11,11 @@
       source="http://www.eclipse.org/oomph/setup/BrandingInfo">
     <detail
         key="folderName">
-      <value>eclipse</value>
+      <value>mmserver-eclipse-latest</value>
     </detail>
     <detail
         key="folderName.macosx">
-      <value>Eclipse</value>
+      <value>mmserver-eclipse-latest</value>
     </detail>
   </annotation>
   <setupTask
@@ -30,6 +30,11 @@
       option="-Xmx"
       value="4096m"
       vm="true"/>
+  <setupTask
+      xsi:type="setup:EclipseIniTask"
+      option="-Xms"
+      value="4096m"
+      vm="true"/>      
   <setupTask
       xsi:type="setup:InstallationTask"
       id="installation"/>
@@ -68,7 +73,7 @@
       name="product.location"
       value="${installation.location/}${installation.relativeProductFolder}"/>
   <version name="latest"
-      label="Latest"
+      label="derzeit aktuellste Stable Version"
       requiredJavaVersion="1.8">
     <setupTask
         xsi:type="setup:CompoundTask"
@@ -123,8 +128,10 @@
     </setupTask>
     <setupTask
         xsi:type="setup.p2:P2Task"
-        id="modeling"
-        label="Modeling Edition">
+        id="java-gui-ide"
+        label="WindowBuilder & SWT Designer Edition">
+
+      <!-- Eclipse Basis - SWT 4.14 -->
       <requirement
           name="epp.package.modeling"
           versionRange="[4.6.0,5.0.0)"/>
@@ -134,46 +141,51 @@
       <requirement
           name="org.eclipse.rcp.feature.group"
           versionRange="[4.6.0,5.0.0)"/>
+      
+      <!-- WindowsBuilder -->
       <requirement
-          name="org.eclipse.e4.core.tools.feature.feature.group"/>
+          name="org.eclipse.wb.core.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.ui.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.java.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.core.xml.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.layout.group.feature.feature.group"/>
+
+      <!-- SWT Designer -->
+      <requirement
+          name="org.eclipse.wb.rcp.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.wb.swt.feature.feature.group"/>          
+
+      <!-- Swing Designer -->
+      <requirement
+          name="org.eclipse.wb.swing.feature.feature.group"/>
+
+      <!-- Code Repository Tools -->
+
+      <!-- GIT -->
       <requirement
           name="org.eclipse.egit.feature.group"/>
       <requirement
-          name="org.eclipse.emf.cdo.epp.feature.group"/>
+          name="org.eclipse.jgit.feature.group"/>
+
+      <!-- Maven -->
       <requirement
-          name="org.eclipse.emf.compare.diagram.sirius.source.feature.group"/>
+          name="org.eclipse.m2e.feature.feature.group"/>
+
+      <!-- Gradle -->
       <requirement
-          name="org.eclipse.emf.compare.egit.feature.group"/>
+          name="org.eclipse.buildship.feature.group"/>
+
       <requirement
-          name="org.eclipse.emf.compare.ide.ui.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.compare.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecoretools.design.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecp.sdk.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.emfstore.sdk.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.parsley.sdk.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.query.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.transaction.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.validation.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gef.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.gmf.runtime.sdk.feature.group"/>
+          name="org.eclipse.mylyn.hudson.feature.group"/>
+
+      <!-- Eclipse Toolbox -->
       <requirement
           name="org.eclipse.jdt.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.bugzilla_feature.feature.group"/>
       <requirement
           name="org.eclipse.mylyn.context_feature.feature.group"/>
       <requirement
@@ -181,61 +193,21 @@
       <requirement
           name="org.eclipse.mylyn.java_feature.feature.group"/>
       <requirement
-          name="org.eclipse.mylyn.pde_feature.feature.group"/>
-      <requirement
-          name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
+          name="org.eclipse.mylyn.git.feature.group"/>
       <requirement
           name="org.eclipse.mylyn_feature.feature.group"/>
       <requirement
-          name="org.eclipse.ocl.all.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.pde.feature.group"/>
-      <requirement
-          name="org.eclipse.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.uml2.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.xsd.sdk.feature.group"/>
-      <requirement
           name="org.eclipse.eclemma.feature.feature.group"/>
+
+
+      <!-- MarketPlace Client  -->
       <requirement
-          name="net.sf.eclipsecs.feature.group"/>
-      <requirement
-          name="org.eclipse.rap.tools.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.pde.api.tools.ee.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.wst.web_ui.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.wst.xml_ui.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.m2e.feature.feature.group"/>
-      <requirement
-          name="org.pitest.pitclipse.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecp.view.section.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecp.view.viewproxy.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecp.view.indexdmr.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecp.view.keyattributedmr.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.ecp.view.mappingdmr.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emfforms.view.annotation.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.emfforms.editor.feature.source.feature.group"/>
-      <requirement
-          name="org.eclipse.xtend.sdk.feature.group"/>
-      <requirement
-          name="org.eclipse.fx.ide.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.edapt.recorder.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.emf.edapt.runtime.feature.feature.group"/>
-      <requirement
-          name="org.eclipse.cbi.targetplatform-feature.feature.group"/>
+          name="org.eclipse.epp.mpc.feature.group"/>
+
+      <!-- Oomph Client  -->
+
+
+
       <repository
           url="http://download.eclipse.org/releases/2019-12"/>
       <repository
@@ -257,5 +229,5 @@
     </setupTask>
     <description></description>
   </version>
-  <description>To make your life easier, we at EclipseSource would like to share our experience with the Eclipse IDE by sharing our standard settings and installed plug-ins with you. Of course, we sometimes use different settings for different projects, so this is kind of the common denominator and our starting point for new projects. To make this more useful, we will also describe the settings we apply and the plug-ins we install in a blog series.: http://eclipsesource.com/blogs/2015/08/17/introducing-the-eclipsesource-oomph-profile/</description>
+  <description>Steinbeis Edition: aktuelle Eclipse IDE zur Java Entwicklung und Komponenten um die SWT / Swing Formulare zu designen. MM Toolbox - abgestimmt auf die Management Monitor Suite </description>
 </setup:Product>
